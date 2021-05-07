@@ -1,0 +1,37 @@
+{
+  "data": {
+    "skuDetailList": [
+      {
+      "id": "350",
+      "goods_id": "514",
+      "goods_img": "https:\/\/oem.mobzhifu.com\/Uploads\/Picture\/Goods\/2018-10-26\/5bd2c69e6f2bf.png",
+      "sku": "\u7ea2\u8272,\u751c",
+      "sku_res": "515",
+      "online_price": "25.00",
+      "num": "136",
+      "shop_mem_price": 0
+    }, {
+      "id": "351",
+      "goods_id": "514",
+      "goods_img": "https:\/\/oem.mobzhifu.com\/Uploads\/Picture\/Goods\/2018-10-26\/5bd2cb4bacb3a.png",
+      "sku": "\u7eff\u8272,\u5fae\u8fa3",
+      "sku_res": "516",
+      "online_price": "26.00",
+      "num": "137",
+      "shop_mem_price": 0
+    }],
+    "skuList":
+    [{
+      "name": "机上升舱",
+      "list": [{
+        "path": "515",
+        "name": "头等舱"
+      }, {
+        "path": "516",
+        "name": "超级经济舱"
+      }]
+    }]
+  },
+  "status": 1,
+  "msg": "\u67e5\u8be2\u6210\u529f"
+}
