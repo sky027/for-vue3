@@ -1,61 +1,52 @@
-"use strict";
-
-// import Vue from "vue";
 import axios from "axios";
+import qs from "qs";
+// axios.defaults.baseURL = ''  //正式
+// axios.defaults.baseURL = 'http://test' //测试
+//post请求头
+axios.defaults.headers.post["Content-Type"] ="application/x-www-form-urlencoded;charset=UTF-8";
+//设置超时
+axios.defaults.timeout = 10000;
 
-// Full config:  https://github.com/axios/axios#request-config
-// axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
-// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-
-let config = {
-  // baseURL: process.env.baseURL || process.env.apiUrl || ""
-  // timeout: 60 * 1000, // Timeout
-  // withCredentials: true, // Check cross-site Access-Control
-};
-
-const _axios = axios.create(config);
-
-_axios.interceptors.request.use(
-  function (config) {
-    // Do something before request is sent
+axios.interceptors.request.use(
+  config => {
     return config;
   },
-  function (error) {
-    // Do something with request error
+  error => {
     return Promise.reject(error);
   }
 );
-
-// Add a response interceptor
-_axios.interceptors.response.use(
-  function (response) {
-    // Do something with response data
-    return response;
+axios.interceptors.response.use(
+  response => {
+    if (response.status == 200) {
+      return Promise.resolve(response);
+    } else {
+      return Promise.reject(response);
+    }
   },
-  function (error) {
-    // Do something with response error
-    return Promise.reject(error);
+  error => {
+    alert(`异常请求：${JSON.stringify(error.message)}`)
   }
 );
+export default {
+  post(url, data) {
+    return new Promise((resolve, reject) => {
+      axios({ method: "post", url, data: qs.stringify(data) })
+        .then(res => {
+          resolve(res.data);
+        }).catch(err => {
+           reject(err);
+        });
+    });
+  },
 
-Plugin.install = function (Vue, options) {
-  Vue.axios = _axios;
-  window.axios = _axios;
-  Object.defineProperties(Vue.prototype, {
-    axios: {
-      get() {
-        return _axios;
-      },
-    },
-    $axios: {
-      get() {
-        return _axios;
-      },
-    },
-  });
+  get(url, data) {
+    return new Promise((resolve, reject) => {
+      axios({ method: "get", url, params: data })
+        .then(res => {
+          resolve(res.data);
+        }).catch(err => {
+          reject(err);
+        })
+    });
+  }
 };
-
-// Vue.use(Plugin);
-
-export default Plugin;
