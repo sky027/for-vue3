@@ -7,17 +7,15 @@ axios.defaults.headers.post["Content-Type"] ="application/x-www-form-urlencoded;
 //设置超时
 axios.defaults.timeout = 10000;
 
-axios.interceptors.request.use(
-  config => {
+axios.interceptors.request.use(config => {
     return config;
-  },
-  error => {
+  }, error => {
     return Promise.reject(error);
   }
 );
 axios.interceptors.response.use(
   response => {
-    if (response.status == 200) {
+    if (response.status === 200) {
       return Promise.resolve(response);
     } else {
       return Promise.reject(response);

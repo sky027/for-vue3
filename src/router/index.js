@@ -20,6 +20,11 @@ const routes = [
       b: 2,
     },
   },
+  {
+    path: "/tab-test",
+    name: "Tabs",
+    component: () => import("../views/test-tab/tab-home.vue"),
+  },
 ];
 
 const router = createRouter({
