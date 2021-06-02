@@ -27,7 +27,7 @@ module.exports = {
     // css预设器配置项
     loaderOptions: {},
     // 启用 CSS modules for all css / pre-processor files.
-    requireModuleExtension: false,
+    requireModuleExtension: true,
   },
   //在根目录下创建vue.config.js,如下配置：
   devServer: {
