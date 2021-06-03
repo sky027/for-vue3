@@ -25,6 +25,11 @@ const routes = [
     name: "Tabs",
     component: () => import("../views/test-tab/tab-home.vue"),
   },
+  {
+    path: "/lang-test",
+    name: "language",
+    component: () => import("../views/language-select.vue"),
+  },
 ];
 
 const router = createRouter({

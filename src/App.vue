@@ -2,7 +2,8 @@
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link to="/tab-test">页签</router-link>
+    <router-link to="/tab-test">页签</router-link> |
+    <router-link to="/lang-test">语言国际化</router-link>
   </div>
   <router-view />
 </template>
